@@ -67,12 +67,11 @@ export default function Home() {
       <section className="section hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">A calm, personal memory hunter</p>
+            <p className="eyebrow">A calm, personal, memory hunter</p>
             <h1>Welcome to your Intropod</h1>
             <p className="lead">
               Log your personal journey through life at your own pace. A space
-              made by you, for you, with gentle structure and beautiful
-              rituals.
+              made by you, for you, with gentle structure and beautiful rituals.
             </p>
             <div className="hero-actions">
               <Link className="button primary" to="/contact">
@@ -185,8 +184,8 @@ export default function Home() {
             <p className="eyebrow">Quests and streaks</p>
             <h2>Consistency without the pressure</h2>
             <p>
-              Gentle quests meet flexible tiles. Track your streaks, collect
-              XP, and choose side quests that mirror your current season.
+              Gentle quests meet flexible tiles. Track your streaks, collect XP,
+              and choose side quests that mirror your current season.
             </p>
             <div className="quest-pills">
               <span>Daily quests</span>

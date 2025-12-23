@@ -62,9 +62,9 @@ export default function App() {
             <Link to="/contact">Contact</Link>
           </nav>
           <div className="header-actions">
-            <Link className="button ghost" to="/contact">
+            {/* <Link className="button ghost" to="/contact">
               Get the app
-            </Link>
+            </Link> */}
             <button
               className="button toggle"
               onClick={toggleTheme}
