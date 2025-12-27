@@ -436,6 +436,43 @@ textarea {
   color: var(--muted);
 }
 
+.screens-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.screen-card {
+  display: grid;
+  gap: 14px;
+}
+
+.screen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  transition: transform 0.35s ease;
+}
+
+.screen-card:hover .screen-image {
+  transform: scale(1.1);
+}
+
+.screen-card figcaption {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.screen-card figcaption strong {
+  color: var(--text);
+  font-size: 1rem;
+}
+
 .split {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -832,8 +869,68 @@ textarea {
   font-size: 0.9rem;
 }
 
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+[data-reveal].ripple-text {
+  white-space: normal;
+}
+
+.ripple-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ripple-char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(16px);
+}
+
+[data-reveal].ripple-text.is-visible .ripple-char {
+  animation: rippleIn 0.8s ease-out both;
+  animation-delay: calc(var(--char-index) * 0.03s);
+}
+
+[data-reveal].ripple-text.is-visible {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes rippleIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px) scale(0.98);
+}
+
+[data-reveal].is-visible {
+  animation: dropIn 0.85s ease-out both;
+}
+
 .stagger > * {
-  animation: rise 0.9s ease-out both;
+  animation-delay: 0.05s;
 }
 
 .stagger > *:nth-child(1) {
@@ -875,6 +972,7 @@ textarea {
 
 @media (max-width: 960px) {
   .hero-grid,
+  .screens-grid,
   .split,
   .quest-grid,
   .premium-grid,
@@ -896,6 +994,11 @@ textarea {
     width: auto;
     margin-top: 16px;
     animation: none;
+  }
+
+  .screen-image {
+    max-width: 360px;
+    margin: 0 auto;
   }
 
   .premium-card {
@@ -933,11 +1036,34 @@ textarea {
   .device-card img {
     height: 380px;
   }
+
+  .screens-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-card {
+    gap: 10px;
+  }
+
+  .screen-image {
+    max-width: 280px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ripple-char {
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 }

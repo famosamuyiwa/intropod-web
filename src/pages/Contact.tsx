@@ -91,7 +91,7 @@ export default function Contact() {
   return (
     <section className="section surface" id="contact">
       <div className="container contact-grid">
-        <div className="contact-card">
+        <div className="contact-card" data-reveal>
           <p className="eyebrow">Contact Us</p>
           <h2>We are here to help</h2>
           <p>Any Questions? Send us a note and we will reply soon.</p>
@@ -152,8 +152,9 @@ export default function Contact() {
             src={heroImage}
             alt="Soft gradient background"
             className="contact-image"
+            data-reveal
           />
-          <div className="contact-quote">
+          <div className="contact-quote" data-reveal>
             <p className="quote">
               "The quietest moments end up telling the biggest stories."
             </p>

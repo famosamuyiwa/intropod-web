@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import heroImage from "../assets/images/hero.png";
 import memoryImage from "../assets/images/memory.png";
+import homeScreen from "../assets/images/home_screen.png";
+import memoryLaneScreen from "../assets/images/memory_lane_screen.png";
+import questScreen from "../assets/images/quest_screen.png";
+import sideQuestScreen from "../assets/images/side_quest_screen.png";
+import profileScreen from "../assets/images/profile_screen.png";
+import leaderboardScreen from "../assets/images/leaderboard_screen.png";
+import badgeBookScreen from "../assets/images/badge_book_screen.png";
 
 const premiumCoverUrl =
   "https://nyc.cloud.appwrite.io/v1/storage/buckets/69459793002f9559409e/files/694ae3ba003406fae91f/view?project=694578d0000e9651730d";
@@ -59,6 +66,40 @@ const tileHighlights = [
   { label: "Photo of the Day", accent: "#ff0000", pastel: "#ffe5e5" },
   { label: "Something I Ate", accent: "#1abc9c", pastel: "#e0f6f1" },
   { label: "Random Moment", accent: "#a78bfa", pastel: "#f3edff" },
+];
+
+const screenshots = [
+  {
+    title: "Home",
+    image: homeScreen,
+    description: "Daily tiles and your current streak at a glance.",
+  },
+  {
+    title: "Memory Lane",
+    image: memoryLaneScreen,
+    description: "A gentle timeline of everything you've logged.",
+  },
+  {
+    title: "Side quests",
+    image: sideQuestScreen,
+    description: "Custom rituals built around your habits.",
+  },
+
+  {
+    title: "Quests",
+    image: questScreen,
+    description: "Daily, weekly, and monthly momentum.",
+  },
+  {
+    title: "Profile",
+    image: profileScreen,
+    description: "Your personal home base and settings.",
+  },
+  {
+    title: "Leaderboard",
+    image: leaderboardScreen,
+    description: "Track streaks and milestones.",
+  },
 ];
 
 export default function Home() {
@@ -134,10 +175,46 @@ export default function Home() {
           </div>
           <div className="feature-grid stagger">
             {features.map((feature) => (
-              <article className="feature-card" key={feature.title}>
+              <article
+                className="feature-card"
+                key={feature.title}
+                data-reveal
+              >
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section surface" id="screens">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Screens</p>
+            <h2>A quiet, crafted interface</h2>
+            <p>
+              Every screen is tuned for calm reflection, with warm neutrals and
+              gentle structure throughout your day.
+            </p>
+          </div>
+          <div className="screens-grid stagger">
+            {screenshots.map((screen) => (
+              <figure
+                className="screen-card text-center"
+                key={screen.title}
+                data-reveal
+              >
+                <img
+                  className="screen-image"
+                  src={screen.image}
+                  alt={`${screen.title} screen`}
+                />
+                <figcaption>
+                  <strong>{screen.title}</strong>
+                  <span>{screen.description}</span>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
@@ -168,7 +245,7 @@ export default function Home() {
             </p>
             <div className="step-list stagger">
               {steps.map((step) => (
-                <div className="step" key={step.title}>
+                <div className="step" key={step.title} data-reveal>
                   <h3>{step.title}</h3>
                   <p>{step.description}</p>
                 </div>
@@ -194,15 +271,15 @@ export default function Home() {
             </div>
           </div>
           <div className="quest-cards stagger">
-            <div className="quest-card">
+            <div className="quest-card" data-reveal>
               <p className="meta-label">Streak pulse</p>
               <p className="meta-value">Celebrate progress, not perfection.</p>
             </div>
-            <div className="quest-card">
+            <div className="quest-card" data-reveal>
               <p className="meta-label">Side quests</p>
               <p className="meta-value">Build custom routines with Premium.</p>
             </div>
-            <div className="quest-card">
+            <div className="quest-card" data-reveal>
               <p className="meta-label">XP summary</p>
               <p className="meta-value">See your momentum at a glance.</p>
             </div>
@@ -226,7 +303,7 @@ export default function Home() {
             </p>
           </div>
           <div className="theme-grid">
-            <div className="theme-card">
+            <div className="theme-card" data-reveal>
               <div>
                 <h3>Sand (Light)</h3>
                 <p>Warm, grounded, and airy for daytime reflection.</p>
@@ -238,7 +315,7 @@ export default function Home() {
                 <span style={{ background: "#2b1f16" }} />
               </div>
             </div>
-            <div className="theme-card">
+            <div className="theme-card" data-reveal>
               <div>
                 <h3>Graphite (Dark)</h3>
                 <p>Moody, focused, and soft on the eyes at night.</p>
@@ -256,7 +333,7 @@ export default function Home() {
 
       <section className="section" id="premium">
         <div className="container premium-grid">
-          <div className="premium-card">
+          <div className="premium-card" data-reveal>
             <div className="premium-cover">
               <img src={premiumCoverUrl} alt="Intropod Premium cover" />
             </div>
@@ -275,7 +352,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="premium-note">
+          <div className="premium-note" data-reveal>
             <p className="eyebrow">Personal by design</p>
             <h3>Your pace, your palette</h3>
             <p>

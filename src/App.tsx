@@ -37,11 +37,87 @@ function ScrollToHash() {
 
 export default function App() {
   const [theme, setTheme] = useState<"light" | "dark">(getInitialTheme);
+  const location = useLocation();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     window.localStorage.setItem("intropod-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    const headings = Array.from(
+      document.querySelectorAll<HTMLElement>("h1, h2, h3")
+    );
+
+    headings.forEach((heading) => {
+      if (heading.dataset.ripple === "true") {
+        return;
+      }
+
+      const text = heading.textContent?.trim();
+      if (!text) {
+        return;
+      }
+
+      heading.dataset.ripple = "true";
+      heading.classList.add("ripple-text");
+      heading.setAttribute("data-reveal", "");
+      heading.setAttribute("aria-label", text);
+      heading.textContent = "";
+
+      let charIndex = 0;
+      text.split(" ").forEach((word, wordIndex, allWords) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "ripple-word";
+        wordSpan.setAttribute("aria-hidden", "true");
+
+        Array.from(word).forEach((char) => {
+          const span = document.createElement("span");
+          span.className = "ripple-char";
+          span.style.setProperty("--char-index", `${charIndex}`);
+          span.textContent = char;
+          wordSpan.appendChild(span);
+          charIndex += 1;
+        });
+
+        heading.appendChild(wordSpan);
+
+        if (wordIndex < allWords.length - 1) {
+          heading.appendChild(document.createTextNode(" "));
+          charIndex += 1;
+        }
+      });
+    });
+
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]")
+    );
+
+    if (elements.length === 0) {
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, activeObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            activeObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   const toggleTheme = () => {
     setTheme((current) => (current === "dark" ? "light" : "dark"));

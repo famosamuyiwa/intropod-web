@@ -21,7 +21,7 @@ export default function Terms() {
           </p>
         </div>
         <div className="legal-cards">
-          <div>
+          <div data-reveal>
             <h3>1. Eligibility</h3>
             <p>
               You must be at least 10 years old to use the Service. If you are
@@ -29,14 +29,14 @@ export default function Terms() {
               parent or guardian.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>2. Account Registration</h3>
             <p>
               You are responsible for maintaining the confidentiality of your
               account credentials and for all activity under your account.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>3. User Content</h3>
             <p>
               You retain ownership of the content you upload. You grant us a
@@ -46,7 +46,7 @@ export default function Terms() {
               it.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>4. Acceptable Use</h3>
             <p>
               You agree not to violate any laws or third-party rights, upload
@@ -54,7 +54,7 @@ export default function Terms() {
               disrupt, or misuse the Service.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>5. Sharing &amp; Social Features</h3>
             <p>
               Intropod does not offer sharing or social features. Your content
@@ -62,7 +62,7 @@ export default function Terms() {
               we will update these Terms.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>6. Subscriptions and Payments</h3>
             <p>
               Premium features may require a paid subscription. Subscriptions
@@ -71,7 +71,7 @@ export default function Terms() {
               governed by the app store's policies.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>7. Termination</h3>
             <p>
               We may suspend or terminate your account if you violate these
@@ -79,14 +79,14 @@ export default function Terms() {
               app.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>8. Disclaimers</h3>
             <p>
               The Service is provided "as is" without warranties of any kind. We
               do not guarantee uninterrupted or error-free service.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>9. Limitation of Liability</h3>
             <p>
               To the maximum extent permitted by law, Intropod is not liable for
@@ -94,28 +94,28 @@ export default function Terms() {
               use of the Service.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>10. Indemnification</h3>
             <p>
               You agree to indemnify and hold Intropod harmless from claims
               arising from your use of the Service or your content.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>11. Governing Law</h3>
             <p>
               These Terms are governed by the laws of the United States and the
               State of New York, without regard to conflict-of-law rules.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>12. Changes to Terms</h3>
             <p>
               We may update these Terms from time to time. Continued use of the
               Service means you accept the updated Terms.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>13. Contact Us</h3>
             <p>Email: support@intropod.com</p>
             <p>Address: Brooklyn, New York, United States</p>

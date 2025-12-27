@@ -17,21 +17,21 @@ export default function DeleteAccount() {
           </p>
         </div>
         <div className="legal-cards">
-          <div>
+          <div data-reveal>
             <h3>1. Verify identity</h3>
             <p>
               We confirm you own the account by replying to the request email
               and may ask for additional verification if needed.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>2. Confirm scope</h3>
             <p>
               We explain what will be deleted (profile, tiles, media, notes, and
               backups) and what may be retained for legal or security reasons.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>3. Cancel subscriptions</h3>
             <p>
               We remind you to cancel any active subscriptions through the
@@ -39,7 +39,7 @@ export default function DeleteAccount() {
               charges.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>4. Delete data</h3>
             <p>
               Once confirmed, we remove your data from active systems and

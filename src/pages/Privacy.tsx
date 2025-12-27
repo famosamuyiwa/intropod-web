@@ -22,7 +22,7 @@ export default function Privacy() {
           </p>
         </div>
         <div className="legal-cards">
-          <div>
+          <div data-reveal>
             <h3>1. Information We Collect</h3>
             <p>
               <strong>Account Information:</strong> email address,
@@ -61,7 +61,7 @@ export default function Privacy() {
               third-party analytics or crash-reporting tools.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>2. How We Use Information</h3>
             <p>
               We use your information to provide and operate the Service (login,
@@ -76,7 +76,7 @@ export default function Privacy() {
               Appwrite. We do not use Google data for advertising or analytics.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>3. Sharing and Disclosure</h3>
             <p>
               We may share information with service providers such as Appwrite
@@ -89,7 +89,7 @@ export default function Privacy() {
               rights, safety, and security. We do not sell your personal data.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>4. User Content &amp; Visibility</h3>
             <p>
               Your photos and tiles are private to you. Intropod does not offer
@@ -97,7 +97,7 @@ export default function Privacy() {
               users.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>5. Data Storage</h3>
             <p>
               We store your account information and user content in our service
@@ -106,7 +106,7 @@ export default function Privacy() {
               systems and service providers needed to operate the Service.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>6. Data Retention</h3>
             <p>
               We retain your data as long as your account is active or as needed
@@ -116,14 +116,14 @@ export default function Privacy() {
               limitations.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>7. Security</h3>
             <p>
               We take reasonable steps to protect your information, but no
               system is 100% secure. You use the Service at your own risk.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>8. Children&apos;s Privacy</h3>
             <p>
               The Service is intended for users age 10 and older. If you are
@@ -133,7 +133,7 @@ export default function Privacy() {
               collected such data, contact us and we will delete it.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>9. International Users</h3>
             <p>
               We are based in the United States. If you access the Service from
@@ -141,7 +141,7 @@ export default function Privacy() {
               data in the U.S.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>10. Your Rights</h3>
             <p>
               Depending on your location, you may have rights to access,
@@ -149,7 +149,7 @@ export default function Privacy() {
               support@intropod.com to request help.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>11. Changes to This Policy</h3>
             <p>
               We may update this Privacy Policy from time to time. If we make
@@ -157,7 +157,7 @@ export default function Privacy() {
               within the app.
             </p>
           </div>
-          <div>
+          <div data-reveal>
             <h3>12. Contact Us</h3>
             <p>Email: support@intropod.com</p>
             <p>Address: Brooklyn, New York, United States</p>
