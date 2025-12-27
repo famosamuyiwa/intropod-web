@@ -1047,6 +1047,8 @@ textarea {
 
   .screen-image {
     max-width: 280px;
+    height: auto;
+    object-fit: contain;
   }
 }
 
