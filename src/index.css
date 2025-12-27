@@ -456,9 +456,9 @@ textarea {
   transition: transform 0.35s ease;
 }
 
-.screen-card:hover .screen-image {
+/* .screen-card:hover .screen-image {
   transform: scale(1.1);
-}
+} */
 
 .screen-card figcaption {
   display: grid;
