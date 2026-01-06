@@ -1,3 +1,4 @@
+import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import heroImage from "../assets/images/hero.png";
 import memoryImage from "../assets/images/memory.png";
@@ -102,7 +103,81 @@ const screenshots = [
   },
 ];
 
+type WaitlistStatus = {
+  type: "success" | "error";
+  message: string;
+};
+
 export default function Home() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [waitlistStatus, setWaitlistStatus] = useState<WaitlistStatus | null>(
+    null
+  );
+
+  const onWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setWaitlistStatus(null);
+    const formElement = event.currentTarget;
+
+    if (!formElement.reportValidity()) {
+      return;
+    }
+
+    const endpoint = import.meta.env.VITE_WAITLIST_ENDPOINT;
+
+    if (!endpoint) {
+      setWaitlistStatus({
+        type: "error",
+        message: "Missing waitlist endpoint. Please try again later.",
+      });
+      return;
+    }
+
+    const rawData = new FormData(formElement);
+    const emailValue = rawData.get("email");
+    const email = typeof emailValue === "string" ? emailValue.trim() : "";
+
+    if (!email) {
+      setWaitlistStatus({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const payload = new URLSearchParams({ email, source: "homepage" });
+      await fetch(endpoint, {
+        method: "POST",
+        body: payload,
+        mode: "no-cors",
+      });
+
+      setWaitlistStatus({
+        type: "success",
+        message: "You're on the waitlist!",
+      });
+      formElement.reset();
+    } catch (error) {
+      setWaitlistStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Failed to join waitlist. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <section className="section hero">
@@ -115,13 +190,41 @@ export default function Home() {
               made by you, for you, with gentle structure and beautiful rituals.
             </p>
             <div className="hero-actions">
-              <Link className="button primary" to="/contact">
-                Start your pod
-              </Link>
+              <form
+                className="waitlist-form"
+                onSubmit={onWaitlistSubmit}
+                aria-busy={isSubmitting}
+              >
+                <input
+                  className="waitlist-input"
+                  type="email"
+                  name="email"
+                  placeholder="Enter email e.g horus@gmail.com"
+                  autoComplete="email"
+                  required
+                  aria-label="Email address"
+                />
+                <button
+                  className="button primary"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Joining..." : "Join Waitlist"}
+                </button>
+              </form>
               <Link className="button secondary" to="/#features">
                 Explore features
               </Link>
             </div>
+            {waitlistStatus && (
+              <p
+                className={`waitlist-status ${waitlistStatus.type}`}
+                role="status"
+                aria-live="polite"
+              >
+                {waitlistStatus.message}
+              </p>
+            )}
           </div>
           <div className="hero-visual">
             <div className="device-card">
@@ -175,11 +278,7 @@ export default function Home() {
           </div>
           <div className="feature-grid stagger">
             {features.map((feature) => (
-              <article
-                className="feature-card"
-                key={feature.title}
-                data-reveal
-              >
+              <article className="feature-card" key={feature.title} data-reveal>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </article>

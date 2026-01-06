@@ -274,6 +274,52 @@ textarea {
   gap: 12px;
 }
 
+.waitlist-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+.waitlist-input {
+  min-width: 180px;
+  flex: 1 1 260px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--pill);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.waitlist-input::placeholder {
+  color: var(--muted);
+}
+
+.waitlist-status {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.waitlist-status.success {
+  color: var(--accent);
+  border-color: rgba(176, 106, 54, 0.35);
+  background: rgba(176, 106, 54, 0.12);
+}
+
+.waitlist-status.error {
+  color: #b24d4d;
+  border-color: rgba(178, 77, 77, 0.3);
+  background: rgba(178, 77, 77, 0.12);
+}
+
 .hero-meta {
   margin-top: 32px;
   display: grid;
@@ -1049,6 +1095,28 @@ textarea {
     max-width: 280px;
     height: auto;
     object-fit: contain;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-actions > .button {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .waitlist-form,
+  .waitlist-input,
+  .waitlist-form .button {
+    width: 100%;
+  }
+
+  .waitlist-form {
+    max-width: 320px;
+    margin: 0 auto;
+    justify-content: center;
   }
 }
 
