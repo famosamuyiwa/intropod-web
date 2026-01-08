@@ -1,4 +1,3 @@
-import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import heroImage from "../assets/images/hero.png";
 import memoryImage from "../assets/images/memory.png";
@@ -103,80 +102,9 @@ const screenshots = [
   },
 ];
 
-type WaitlistStatus = {
-  type: "success" | "error";
-  message: string;
-};
-
 export default function Home() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [waitlistStatus, setWaitlistStatus] = useState<WaitlistStatus | null>(
-    null
-  );
-
-  const onWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (isSubmitting) {
-      return;
-    }
-
-    setWaitlistStatus(null);
-    const formElement = event.currentTarget;
-
-    if (!formElement.reportValidity()) {
-      return;
-    }
-
-    const endpoint = import.meta.env.VITE_WAITLIST_ENDPOINT;
-
-    if (!endpoint) {
-      setWaitlistStatus({
-        type: "error",
-        message: "Missing waitlist endpoint. Please try again later.",
-      });
-      return;
-    }
-
-    const rawData = new FormData(formElement);
-    const emailValue = rawData.get("email");
-    const email = typeof emailValue === "string" ? emailValue.trim() : "";
-
-    if (!email) {
-      setWaitlistStatus({
-        type: "error",
-        message: "Please enter a valid email address.",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const payload = new URLSearchParams({ email, source: "homepage" });
-      await fetch(endpoint, {
-        method: "POST",
-        body: payload,
-        mode: "no-cors",
-      });
-
-      setWaitlistStatus({
-        type: "success",
-        message: "You're on the waitlist!",
-      });
-      formElement.reset();
-    } catch (error) {
-      setWaitlistStatus({
-        type: "error",
-        message:
-          error instanceof Error
-            ? error.message
-            : "Failed to join waitlist. Please try again.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const appStoreUrl =
+    import.meta.env.VITE_APP_STORE_URL ?? "https://apps.apple.com/";
 
   return (
     <>
@@ -190,41 +118,30 @@ export default function Home() {
               made by you, for you, with gentle structure and beautiful rituals.
             </p>
             <div className="hero-actions">
-              <form
-                className="waitlist-form"
-                onSubmit={onWaitlistSubmit}
-                aria-busy={isSubmitting}
+              <a
+                className="app-store-button"
+                href={appStoreUrl}
+                target="_blank"
+                rel="noreferrer"
               >
-                <input
-                  className="waitlist-input"
-                  type="email"
-                  name="email"
-                  placeholder="Enter email e.g horus@gmail.com"
-                  autoComplete="email"
-                  required
-                  aria-label="Email address"
-                />
-                <button
-                  className="button primary"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Joining..." : "Join Waitlist"}
-                </button>
-              </form>
+                <span className="app-store-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    role="img"
+                    focusable="false"
+                    aria-hidden="true"
+                  >
+                    <path d="M16.7 13.2c0-2 1.7-3 1.7-3-0.9-1.3-2.4-1.5-2.9-1.5-1.2-0.1-2.3 0.7-2.9 0.7-0.6 0-1.6-0.7-2.6-0.7-1.3 0-2.6 0.8-3.3 2.1-1.4 2.5-0.4 6.2 1 8.2 0.7 1 1.5 2.1 2.6 2.1 1 0 1.4-0.7 2.6-0.7 1.2 0 1.5 0.7 2.6 0.7 1.1 0 1.8-1 2.5-2 0.8-1.1 1.1-2.1 1.1-2.1-0.1 0-2.1-0.8-2.1-3.8z" />
+                    <path d="M14.5 6.6c0.6-0.7 1-1.6 0.9-2.6-0.9 0-2 0.6-2.6 1.3-0.6 0.7-1.1 1.6-1 2.5 1 0.1 2-0.5 2.7-1.2z" />
+                  </svg>
+                </span>
+                <span className="app-store-label">Download on the</span>
+                <span className="app-store-title">App Store</span>
+              </a>
               <Link className="button secondary" to="/#features">
                 Explore features
               </Link>
             </div>
-            {waitlistStatus && (
-              <p
-                className={`waitlist-status ${waitlistStatus.type}`}
-                role="status"
-                aria-live="polite"
-              >
-                {waitlistStatus.message}
-              </p>
-            )}
           </div>
           <div className="hero-visual">
             <div className="device-card">
