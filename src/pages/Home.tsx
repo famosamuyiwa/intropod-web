@@ -8,6 +8,7 @@ import sideQuestScreen from "../assets/images/side_quest_screen.png";
 import profileScreen from "../assets/images/profile_screen.png";
 import leaderboardScreen from "../assets/images/leaderboard_screen.png";
 import badgeBookScreen from "../assets/images/badge_book_screen.png";
+import appleIcon from "../assets/images/apple.png";
 
 const premiumCoverUrl =
   "https://nyc.cloud.appwrite.io/v1/storage/buckets/69459793002f9559409e/files/694ae3ba003406fae91f/view?project=694578d0000e9651730d";
@@ -125,15 +126,7 @@ export default function Home() {
                 rel="noreferrer"
               >
                 <span className="app-store-icon" aria-hidden="true">
-                  <svg
-                    viewBox="0 0 24 24"
-                    role="img"
-                    focusable="false"
-                    aria-hidden="true"
-                  >
-                    <path d="M16.7 13.2c0-2 1.7-3 1.7-3-0.9-1.3-2.4-1.5-2.9-1.5-1.2-0.1-2.3 0.7-2.9 0.7-0.6 0-1.6-0.7-2.6-0.7-1.3 0-2.6 0.8-3.3 2.1-1.4 2.5-0.4 6.2 1 8.2 0.7 1 1.5 2.1 2.6 2.1 1 0 1.4-0.7 2.6-0.7 1.2 0 1.5 0.7 2.6 0.7 1.1 0 1.8-1 2.5-2 0.8-1.1 1.1-2.1 1.1-2.1-0.1 0-2.1-0.8-2.1-3.8z" />
-                    <path d="M14.5 6.6c0.6-0.7 1-1.6 0.9-2.6-0.9 0-2 0.6-2.6 1.3-0.6 0.7-1.1 1.6-1 2.5 1 0.1 2-0.5 2.7-1.2z" />
-                  </svg>
+                  <img src={appleIcon} alt="" />
                 </span>
                 <span className="app-store-label">Download on the</span>
                 <span className="app-store-title">App Store</span>
